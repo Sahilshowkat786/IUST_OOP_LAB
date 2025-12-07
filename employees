@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+protected:
+    string name;
+    int id;
+    float basic;
+public:
+    void getEmployee() {
+        cout << "Enter Name: ";
+        cin >> name;
+        cout << "Enter Employee ID: ";
+        cin >> id;
+        cout << "Enter Basic Salary: ";
+        cin >> basic;
+    }
+};
+
+class Salary : public Employee {
+    float hra, da, pf, gross, net;
+public:
+    void calculate() {
+        hra = 0.20 * basic;
+        da  = 0.10 * basic;
+        pf  = 0.05 * basic;
+
+        gross = basic + hra + da;
+        net = gross - pf;
+    }
+
+    void displaySlip() {
+        cout << "\n----------- Salary Slip -----------\n";
+        cout << "Name: " << name << endl;
+        cout << "Employee ID: " << id << endl;
+        cout << "Basic Salary: " << basic << endl;
+        cout << "HRA: " << hra << endl;
+        cout << "DA: " << da << endl;
+        cout << "PF Deduction: " << pf << endl;
+        cout << "Net Salary: " << net << endl;
+    }
+};
+
+int main() {
+    Salary s;
+    s.getEmployee();
+    s.calculate();
+    s.displaySlip();
+    return 0;
+}
