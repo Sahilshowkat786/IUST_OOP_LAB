@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class Int
+{
+private:
+    int value;
+
+public:
+    // Default constructor
+    Int() : value(0) {}
+
+    // Parameterized constructor
+    Int(int v) : value(v) {}
+
+    // Display function
+    void display()
+    {
+        cout << value;
+    }
+
+    // User-defined to user-defined conversion
+    Int add(Int i)
+    {
+        Int temp;
+        temp.value = value + i.value;
+        return temp;
+    }
+};
+
+int main()
+{
+    Int a;        // value = 0
+    Int b(20);    // value = 20
+    Int c(30);    // value = 30
+
+    a = b.add(c);   // user-defined to user-defined conversion
+
+    cout << "Result = ";
+    a.display();
+
+    return 0;
+}
